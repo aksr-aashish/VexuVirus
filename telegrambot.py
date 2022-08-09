@@ -74,13 +74,7 @@ def TimeFormatter(milliseconds: int) -> str:
 
 @app.on_message(filters.document)
 def download_telegram_media(client, message):
-	me=Config.userid
-	if not message.from_user.id == me :
-		client.send_message(
-			chat_id=message.chat.id,
-			text = 'Please host your own bot at \nhttps://github.com/uaudith/Virustotal-telegram'
-		)
-		return
+
 	msg = client.send_message(
 	  chat_id=message.chat.id,
 	  text='Download is being started...\nPlease Wait !'
@@ -134,6 +128,6 @@ def check_size(path,userid):
 		reason='\n'.join(reasons)
 		send_msg(userid,'\n☣ --Threats have been detected !-- ☣\n\n**{}** \n\n\n**Description**\n\n`{}`\n\n[Detailed Report]({})'.format(names,reason,obj.link))
 	else:
-		send_msg(userid,'✔️ File is clean ')
+		send_msg(userid,'✔️ No Virus Deteched.')
 
 app.run()
